@@ -1,4 +1,20 @@
 /*
+    Project Name: PCRPGS
+    Created by: Lightnet
+    License: Creative Commons (CC) license
+    Not there are multiples licenses.
+    
+    Information: To build the UI components and farm game.
+    
+ */
+
+/*
+ * Script usable type:
+ * Script Information:
+ * 
+ */
+
+/*
 pc.script.attribute('image_release', 'asset', [], {
     type: 'texture',
     max: 1
@@ -10,19 +26,19 @@ pc.script.attribute('image_hover', 'asset', [], {
     max: 1
 });
 
-pc.script.attribute('image_out', 'asset', [], {
-    type: 'texture',
-    max: 1
-});
-
 pc.script.attribute('image_press', 'asset', [], {
     type: 'texture',
     max: 1
 });
 
-pc.script.create('Spritechangeicon', function (app) {
+pc.script.attribute('image_out', 'asset', [], {
+    type: 'texture',
+    max: 1
+});
+
+pc.script.create('sprite_buttonstate', function (app) {
     // Creates a new SpriteChangeIcon instance
-    var SpriteChangeIcon = function (entity) {
+    var Sprite_buttonstate = function (entity) {
         this.entity = entity;
         this.image_hover = null;
         this.image_out = null;
@@ -30,7 +46,7 @@ pc.script.create('Spritechangeicon', function (app) {
         //this.image_release = null;
     };
 
-    SpriteChangeIcon.prototype = {
+    Sprite_buttonstate.prototype = {
         // Called once after all resources are loaded and before the first update
         initialize: function () {
             this.entity.script.sprite.on('click', this.onClickPress, this);
@@ -80,5 +96,5 @@ pc.script.create('Spritechangeicon', function (app) {
         }
     };
 
-    return SpriteChangeIcon;
+    return Sprite_buttonstate;
 });

@@ -1,3 +1,19 @@
+/*
+    Project Name: PCRPGS
+    Created by: Lightnet
+    License: Creative Commons (CC) license
+    Not there are multiples licenses.
+    
+    Information: To build the UI components and farm game.
+    
+ */
+
+/*
+ * Script usable type:
+ * Script Information:
+ * 
+ */
+
 pc.script.attribute('min', 'number');
 pc.script.attribute('max', 'number');
 
@@ -13,9 +29,9 @@ pc.script.attribute('bartype', 'enumeration', 0, {
     }]
  });
 
-pc.script.create('spritescrollbar', function (app) {
+pc.script.create('sprite_scrollbar', function (app) {
     // Creates a new Spritescrollbar instance
-    var Spritescrollbar = function (entity) {
+    var Sprite_scrollbar = function (entity) {
         this.entity = entity;
         this.offsetx = 0;
         this.offsety = 0;
@@ -36,7 +52,7 @@ pc.script.create('spritescrollbar', function (app) {
         this.percent = 0;
     };
 
-    Spritescrollbar.prototype = {
+    Sprite_scrollbar.prototype = {
         // Called once after all resources are loaded and before the first update
         initialize: function () {
             this.entity.script.sprite.on('click', this.onClickPress, this);
@@ -73,7 +89,7 @@ pc.script.create('spritescrollbar', function (app) {
                     this.slidex = (event.x + this.offsetx);
                     this.entity.script.sprite.x = pc.math.clamp(this.slidex, this.min, this.max);
                     this.percent = (pc.math.clamp(this.slidex, this.min, this.max) - this.min) / this.barsize;
-                    console.log(this.percent);
+                    //console.log(this.percent);
                 }
                 if(this.bartype == 1){//vertical
                     this.slidey = (event.y + this.offsety) * -1;
@@ -81,7 +97,7 @@ pc.script.create('spritescrollbar', function (app) {
                     
                     
                     this.percent = (this.barsize -  ((pc.math.clamp(this.slidey, this.min, this.max)) - (this.min))) / this.barsize;
-                    console.log(this.percent);
+                    //console.log(this.percent);
                     
                 }
             }
@@ -99,12 +115,12 @@ pc.script.create('spritescrollbar', function (app) {
         },
         onClickRelease: function () {
             this.bupdateposition = false;
-        },
+        }
 
         // Called every frame, dt is time in seconds since last update
-        update: function (dt) {
-        }
+        //update: function (dt) {
+        //}
     };
 
-    return Spritescrollbar;
+    return Sprite_scrollbar;
 });

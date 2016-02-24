@@ -1,3 +1,19 @@
+/*
+    Project Name: PCRPGS
+    Created by: Lightnet
+    License: Creative Commons (CC) license
+    Not there are multiples licenses.
+    
+    Information: To build the UI components and farm game.
+    
+ */
+
+/*
+ * Script usable type:
+ * Script Information:
+ * 
+ */
+
 pc.script.create('keyboard_handler', function (app) {
     // Creates a new Keyboard_handler instance
     var Keyboard_handler = function (entity) {

@@ -1,3 +1,19 @@
+/*
+    Project Name: PCRPGS
+    Created by: Lightnet
+    License: Creative Commons (CC) license
+    Not there are multiples licenses.
+    
+    Information: To build the UI components and farm game.
+    
+ */
+
+/*
+ * Script usable type:
+ * Script Information:
+ * 
+ */
+
 pc.script.attribute('currentturn', 'enumeration', 0, {
     enumerations: [{
        name: "Friend",
@@ -75,7 +91,7 @@ pc.script.create('TurnBaseBattleGame', function (app) {
     TurnBaseBattleGame.prototype = {
         // Called once after all resources are loaded and before the first update
         initialize: function () {
-            console.log("FRIENDLY");
+            //console.log("FRIENDLY");
             if(this.party_friend_1 !== null){
                 this.party_friendly.push(this.party_friend_1);
             }
@@ -104,7 +120,7 @@ pc.script.create('TurnBaseBattleGame', function (app) {
                 this.party_friendly.push(this.party_friend_9);
             }
             
-            console.log(this.party_friendly[0]);
+            //console.log(this.party_friendly[0]);
             
             
             if(this.party_enemy_1 !== null){
@@ -134,8 +150,8 @@ pc.script.create('TurnBaseBattleGame', function (app) {
             if(this.party_enemy_9 !== null){
                 this.party_enemies.push(this.party_enemy_9);
             }
-            console.log("FRIENDLY");
-            console.log(this.party_enemies[0]);
+            //console.log("FRIENDLY");
+            //console.log(this.party_enemies[0]);
         },
 
         // Called every frame, dt is time in seconds since last update

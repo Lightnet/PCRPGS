@@ -1,12 +1,13 @@
-pc.script.create('socket', function (app) {
-    // Creates a new Socket instance
-    var Socket = function (entity) {
+pc.script.create('displayinfo', function (app) {
+    // Creates a new Displayinfo instance
+    var Displayinfo = function (entity) {
         this.entity = entity;
     };
 
-    Socket.prototype = {
+    Displayinfo.prototype = {
         // Called once after all resources are loaded and before the first update
         initialize: function () {
+            console.log(window.screen.width+":"+window.screen.height);
         },
 
         // Called every frame, dt is time in seconds since last update
@@ -14,5 +15,5 @@ pc.script.create('socket', function (app) {
         }
     };
 
-    return Socket;
+    return Displayinfo;
 });

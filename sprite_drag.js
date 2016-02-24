@@ -1,27 +1,32 @@
 /*
     Project Name: PCRPGS
-    
     Created by: Lightnet
-    
     License: Creative Commons (CC) license
+    Not there are multiples licenses.
     
     Information: To build the UI components and farm game.
-
+    
  */
 
+/*
+ * Script usable type:
+ * Script Information:
+ * 
+ */
 
-pc.script.create('spritedrag', function (app) {
+pc.script.create('sprite_drag', function (app) {
     // Creates a new Spritedrag instance
-    var Spritedrag = function (entity) {
+    var Sprite_drag = function (entity) {
         this.entity = entity;
         this.offsetx = 0;
         this.offsety = 0;
         this.mousex = 0;
         this.mousey = 0;
         this.bupdateposition = false;
+        this.bdragable = true;
     };
 
-    Spritedrag.prototype = {
+    Sprite_drag.prototype = {
         // Called once after all resources are loaded and before the first update
         initialize: function () {
             this.entity.script.sprite.on('click', this.onClickPress, this);
@@ -37,12 +42,12 @@ pc.script.create('spritedrag', function (app) {
             //cameraEntity.camera.screenToWorld(event.x, event.y, depth, this.pos);
             this.mousex = event.x;
             this.mousey = event.y;
-            if( this.bupdateposition){
-                this.entity.script.sprite.x = (event.x + this.offsetx);
-                this.entity.script.sprite.y = (event.y + this.offsety) * -1;
-            }            
-            // Finally update the cube's world-space position
-            //this.entity.setPosition(this.pos);
+            if(this.bdragable){
+                if( this.bupdateposition){
+                    this.entity.script.sprite.x = (event.x + this.offsetx);
+                    this.entity.script.sprite.y = (event.y + this.offsety) * -1;
+                }
+            }
         },
         
         onClickPress: function () {
@@ -60,5 +65,5 @@ pc.script.create('spritedrag', function (app) {
         }
     };
 
-    return Spritedrag;
+    return Sprite_drag;
 });

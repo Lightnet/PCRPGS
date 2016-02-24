@@ -1,3 +1,12 @@
+
+
+
+
+
+/**
+ * This is an modifed script to work on improvement on mouse events.
+ */
+
 pc.script.attribute('textureAsset', 'asset', [], {
     type: 'texture',
     max: 1

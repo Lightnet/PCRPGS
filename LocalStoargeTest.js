@@ -1,3 +1,19 @@
+/*
+    Project Name: PCRPGS
+    Created by: Lightnet
+    License: Creative Commons (CC) license
+    Not there are multiples licenses.
+    
+    Information: To build the UI components and farm game.
+    
+ */
+
+/*
+ * Script usable type:
+ * Script Information:
+ * 
+ */
+
 pc.script.create('LocalStoargeTest', function (app) {
     // Creates a new LocalStoargeTest instance
     var LocalStoargeTest = function (entity) {
@@ -14,7 +30,7 @@ pc.script.create('LocalStoargeTest', function (app) {
             
             //Assigns a temporary value that can be read by the program.
             var item = parseInt(localStorage.demo1234);
-            console.log(item);
+            //console.log(item);
             //localStorage.demo1234 = 1;
             
             

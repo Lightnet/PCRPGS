@@ -2,9 +2,16 @@
     Project Name: PCRPGS
     Created by: Lightnet
     License: Creative Commons (CC) license
+    Not there are multiples licenses.
     
     Information: To build the UI components and farm game.
     
+ */
+
+/*
+ * Script usable type:
+ * Script Information:
+ * 
  */
 
 
@@ -21,9 +28,9 @@ pc.script.attribute('image_check', 'asset', [], {
 
 pc.script.attribute('unchecked', 'boolean');
 
-pc.script.create('spritetoggle', function (app) {
+pc.script.create('sprite_toggle', function (app) {
     // Creates a new SpriteToggle instance
-    var SpriteToggle = function (entity) {
+    var Sprite_toggle = function (entity) {
         this.entity = entity;
         this.unchecked = false;
         this.image_uncheck = null;
@@ -31,7 +38,7 @@ pc.script.create('spritetoggle', function (app) {
         
     };
 
-    SpriteToggle.prototype = {
+    Sprite_toggle.prototype = {
         // Called once after all resources are loaded and before the first update
         initialize: function () {
             var asset;
@@ -69,5 +76,5 @@ pc.script.create('spritetoggle', function (app) {
         }
     };
 
-    return SpriteToggle;
+    return Sprite_toggle;
 });

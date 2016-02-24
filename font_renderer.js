@@ -1,6 +1,21 @@
-/**
- * Attributes
+/*
+    Project Name: PCRPGS
+    Created by: Lightnet
+    License: Creative Commons (CC) license
+    Not there are multiples licenses.
+    
+    Information: To build the UI components and farm game.
+    
  */
+
+/*
+ * Script usable type:
+ * Script Information:
+ * This is an modifed script to work on improvement on mouse events.
+ * 
+ */
+
+//pc.script.attribute('eventsEnabled', 'boolean');
 
 pc.script.attribute('text', 'string');
 // the maximum length of the text - used to set the initial size of the vertex buffer
@@ -232,15 +247,24 @@ pc.script.create('font_renderer', function (app) {
                 });
                 app.assets.load(assets[i]);
             }
-
+            app.mouse.on('mousemove', this.onMouseMove, this);
             app.mouse.on('mousedown', this.onMouseDown, this);
             if (app.touch) {
                 app.touch.on('touchstart', this.onTouchDown, this);
             }
         },
+        
+        onMouseMove:function(e){
+            if (!this.eventsEnabled) {
+                return;
+            }
+
+            this.onMove(e);
+        },
 
 
         onMouseDown: function (e) {
+            //console.log("font press click?");
             if (!this.eventsEnabled) {
                 return;
             }
@@ -254,6 +278,49 @@ pc.script.create('font_renderer', function (app) {
             }
 
             this.onClick(e.changedTouches[0]);
+        },
+        
+        /**
+         * Calculates if the click has happened inside the rect of this
+         * sprite and fires 'click' event if it has
+         */
+        onMove: function (cursor) {
+            var canvas = app.graphicsDevice.canvas;
+            var tlx, tly, brx, bry, mx, my;
+
+
+            var scaling = this.scaling;
+            var offset = this.offset;
+
+            tlx = 2.0 * (scaling.x * 0 + offset.x) / resolution.x - 1.0;
+            tly = 2.0 * (scaling.y * 0 + offset.y) / resolution.y - 1.0;
+
+
+            brx = 2.0 * (scaling.x * this.width + offset.x) / resolution.x - 1.0;
+            bry = 2.0 * (scaling.y * (- this.height) + offset.y) / resolution.y - 1.0;
+
+            mx = (2.0 * cursor.x / canvas.offsetWidth) - 1;
+            my = (2.0 * (canvas.offsetHeight - cursor.y) / canvas.offsetHeight) - 1;
+
+            if (mx >= tlx && mx <= brx &&
+                my <= tly && my >= bry) {
+                this.ishover = true;
+                if(this.ishover != this.oldhover){
+                    this.fire('hover');
+                    //console.log("hover");
+                    this.oldhover = this.ishover;
+                    //this.ishover = true;
+                }
+            }else{
+                this.ishover = false;
+                if(this.ishover != this.oldhover){
+                    this.fire('out');
+                    //console.log("out");
+                    this.oldhover = this.ishover;
+                    //this.ishover = false;
+                }
+            }
+            //console.log(this.oldhover);
         },
 
         /**
@@ -291,7 +358,7 @@ pc.script.create('font_renderer', function (app) {
          * Re-render the text if necessary
          */
         onAttributeChanged: function (name, oldValue, newValue) {
-            this.eventsEnabled = false;
+            //this.eventsEnabled = false;
 
             if (name === 'text' ) {
                 if (oldValue !== newValue) {
@@ -510,7 +577,7 @@ pc.script.create('font_renderer', function (app) {
         },
 
         onEnable: function () {
-            this.eventsEnabled = false;
+            this.eventsEnabled = true;
         },
 
         onDisable: function () {
@@ -518,7 +585,8 @@ pc.script.create('font_renderer', function (app) {
         },
 
         update: function (dt) {
-            this.eventsEnabled = true;
+            //this.eventsEnabled = true;
+            //console.log("font update?");
         },
 
         destroy: function () {
